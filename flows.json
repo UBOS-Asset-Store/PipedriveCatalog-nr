@@ -135,7 +135,9 @@
             "55fe7f34704f3bc7"
         ],
         "x": 14,
-        "y": 1119
+        "y": 1119,
+        "w": 712,
+        "h": 902
     },
     {
         "id": "d78377c07a215120",
@@ -222,7 +224,9 @@
             "ccbf43ec2e0f83d7"
         ],
         "x": 14,
-        "y": 19
+        "y": 19,
+        "w": 1952,
+        "h": 1022
     },
     {
         "id": "2229ae9934019399",
@@ -246,7 +250,9 @@
             "a2b1bc579a4c0ced"
         ],
         "x": 774,
-        "y": 1119
+        "y": 1119,
+        "w": 972,
+        "h": 162
     },
     {
         "id": "5bf7ccb6c6709633",
@@ -299,7 +305,9 @@
             "36a8ed88d4ee5217"
         ],
         "x": 774,
-        "y": 1319
+        "y": 1319,
+        "w": 1652,
+        "h": 622
     },
     {
         "id": "3b2ecc05f3cef5f7",
@@ -343,7 +351,9 @@
             "bd903ea2c5d6bd1c"
         ],
         "x": 14,
-        "y": 3019
+        "y": 3019,
+        "w": 1132,
+        "h": 662
     },
     {
         "id": "a8bcf74ef7690d27",
@@ -399,7 +409,9 @@
             "84af4b543dc711ed"
         ],
         "x": 14,
-        "y": 2059
+        "y": 2059,
+        "w": 1032,
+        "h": 922
     },
     {
         "id": "917b687317a1b2f4",
@@ -457,7 +469,9 @@
             "070b7d427b47ba29"
         ],
         "x": 14,
-        "y": -21
+        "y": -21,
+        "w": 1092,
+        "h": 162
     },
     {
         "id": "e1e2570867a96dae",
@@ -484,39 +498,6 @@
         "h": 122
     },
     {
-        "id": "754996a3568a407c",
-        "type": "group",
-        "z": "c740254358c79788",
-        "name": "Create default modules",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "3f1bb78590a5f528",
-            "9364254e859e4c90",
-            "b3bedd06c6ab5876",
-            "f5ba92f2d7b23e81",
-            "f0abe371e3e5e3da",
-            "aa19f74e1356424e",
-            "b8bcd41dc8aaae1d",
-            "41b8704eee81a263",
-            "ed75093405ec2a51",
-            "82333b16eae8b979",
-            "591a842b22d55880",
-            "84b04c6a63fd1005",
-            "a56857d87afededb",
-            "6c589b7c08b2805e",
-            "2a96bde58de995eb",
-            "9ca81472e4ebd902",
-            "44ba43e791ca6b03",
-            "02cedde7b7d47dc8"
-        ],
-        "x": 394,
-        "y": 239,
-        "w": 952,
-        "h": 202
-    },
-    {
         "id": "97aa978bb50c06a8",
         "type": "group",
         "z": "be62cf940ec3a969",
@@ -540,7 +521,9 @@
             "794551bef5e94ab3"
         ],
         "x": 14,
-        "y": 159
+        "y": 159,
+        "w": 692,
+        "h": 122
     },
     {
         "id": "9e14441478418873",
@@ -578,7 +561,51 @@
             "86bf79208f5c9b34"
         ],
         "x": 14,
-        "y": 299
+        "y": 299,
+        "w": 1592,
+        "h": 202
+    },
+    {
+        "id": "6d83e49b94059ff4",
+        "type": "group",
+        "z": "c740254358c79788",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "3f1bb78590a5f528",
+            "9364254e859e4c90",
+            "b3bedd06c6ab5876",
+            "f5ba92f2d7b23e81",
+            "f0abe371e3e5e3da",
+            "aa19f74e1356424e",
+            "b8bcd41dc8aaae1d",
+            "41b8704eee81a263",
+            "ed75093405ec2a51",
+            "82333b16eae8b979",
+            "591a842b22d55880",
+            "84b04c6a63fd1005",
+            "a56857d87afededb",
+            "6c589b7c08b2805e",
+            "2a96bde58de995eb",
+            "9ca81472e4ebd902",
+            "44ba43e791ca6b03",
+            "02cedde7b7d47dc8",
+            "fe73532815559fa2",
+            "e1c3f1165bf307a6",
+            "9b1dbfe6a4c7af8f",
+            "d706b426d0f3d57d"
+        ],
+        "x": 394,
+        "y": 239,
+        "w": 952,
+        "h": 242
     },
     {
         "id": "61baa7f31d9fdc66",
@@ -1015,7 +1042,7 @@
         "id": "3f1bb78590a5f528",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "create default module Catalog",
         "func": "if(msg.payload.length === 0){\n    msg.collection = \"admin_modules\"\n\n    msg.payload = {\n        \"_id\": objectid('65bb90f10fc96b00119014dc'),\n        \"name\": \"Catalog\",\n        \"position\": 1,\n        \"icon\": \"\",\n        \"deleted\": false,\n        \"isParent\": false\n    }\n\n    return msg;\n}",
         "outputs": 1,
@@ -1040,7 +1067,7 @@
         "id": "9364254e859e4c90",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "1764f8568a80ddbd"
@@ -1057,7 +1084,7 @@
         "id": "b3bedd06c6ab5876",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "create default module Orders",
         "func": "if (msg.payload.length === 0) {\n    msg.collection = \"admin_modules\"\n\n    msg.payload = {\n        \"_id\": objectid('65bb90f10fc96b00119014dd'),\n        \"name\": \"Orders History\",\n        \"position\": 2,\n        \"icon\": \"\",\n        \"deleted\": false,\n        \"isParent\": false\n    }\n\n    return msg;\n}",
         "outputs": 1,
@@ -1082,7 +1109,7 @@
         "id": "f5ba92f2d7b23e81",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "1764f8568a80ddbd"
@@ -1149,7 +1176,7 @@
         "id": "f0abe371e3e5e3da",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "isDefaultExists",
         "func": "msg.collection = \"admin_modules\"\n\nmsg.payload={\n    \"name\": \"Catalog\"\n}\nreturn msg;",
         "outputs": 1,
@@ -1174,7 +1201,7 @@
         "id": "aa19f74e1356424e",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "346e518816416d1d"
@@ -1193,7 +1220,7 @@
         "id": "b8bcd41dc8aaae1d",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "isDefaultExists",
         "func": "msg.collection = \"admin_modules\"\n\nmsg.payload={\n    \"name\": \"Orders History\"\n}\nreturn msg;",
         "outputs": 1,
@@ -1218,7 +1245,7 @@
         "id": "41b8704eee81a263",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "346e518816416d1d"
@@ -1254,7 +1281,7 @@
         "id": "ed75093405ec2a51",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "create default module MyProfile",
         "func": "if (msg.payload.length === 0) {\n    msg.collection = \"admin_modules\"\n\n    msg.payload = {\n        \"_id\": objectid('65bb90f10fc96b00119014de'),\n        \"name\": \"My Profile\",\n        \"position\": 3,\n        \"icon\": \"\",\n        \"deleted\": false,\n        \"isParent\": false\n    }\n\n    return msg;\n}",
         "outputs": 1,
@@ -1279,7 +1306,7 @@
         "id": "82333b16eae8b979",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "1764f8568a80ddbd"
@@ -1296,7 +1323,7 @@
         "id": "591a842b22d55880",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "isDefaultExists",
         "func": "msg.collection = \"admin_modules\"\n\nmsg.payload={\n    \"name\": \"My Profile\"\n}\nreturn msg;",
         "outputs": 1,
@@ -1321,7 +1348,7 @@
         "id": "84b04c6a63fd1005",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "346e518816416d1d"
@@ -1342,7 +1369,7 @@
         "z": "c740254358c79788",
         "g": "e1e2570867a96dae",
         "name": "Administrator",
-        "func": "if(msg.payload.length == 0){\n    msg.payload = {\n        _id: objectid('64afca4f89bef50011f99321'),\n        name: \"Administrator\",\n        deleted: false,\n        permissions: [\n            { \n                \"module\": \"Catalog\", \n                \"moduleId\": objectid('65bb90f10fc96b00119014dc'),  \n                \"canCreate\": true, \n                \"canRead\": true, \n                \"canEdit\": true, \n                \"canRemove\": true \n            },\n            {\n                \"module\": \"Orders History\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014dd'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"My Profile\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014de'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Settings\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            }\n        ],\n        createdAt: new Date((new Date().toISOString()))\n    }\n    return msg;\n}",
+        "func": "if(msg.payload.length == 0){\n    msg.payload = {\n        _id: objectid('64afca4f89bef50011f99321'),\n        name: \"Administrator\",\n        deleted: false,\n        permissions: [\n            { \n                \"module\": \"Catalog\", \n                \"moduleId\": objectid('65bb90f10fc96b00119014dc'),  \n                \"canCreate\": true, \n                \"canRead\": true, \n                \"canEdit\": true, \n                \"canRemove\": true \n            },\n            {\n                \"module\": \"Orders History\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014dd'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"My Profile\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014de'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Settings\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Config\",\n                \"moduleId\": objectid('65bb90f10fc96b00119015df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            }\n        ],\n        createdAt: new Date((new Date().toISOString()))\n    }\n    return msg;\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1426,7 +1453,7 @@
         "id": "a56857d87afededb",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "create default module Settings",
         "func": "if (msg.payload.length === 0) {\n    msg.collection = \"admin_modules\"\n\n    msg.payload = {\n        \"_id\": objectid(\"65bb90f10fc96b00119014df\"),\n        \"name\": \"Settings\",\n        \"position\": 4,\n        \"icon\": \"\",\n        \"deleted\": false,\n        \"isParent\": true,\n        \"childModules\": [\n            {\n                \"name\": \"User Management\",\n                \"page_id\": \"User Management\",\n                \"position\": 1\n            },\n            {\n                \"name\": \"Admin Roles\",\n                \"page_id\": \"Admin Roles\",\n                \"position\": 2\n            }\n        ]\n    }\n    return msg;\n}",
         "outputs": 1,
@@ -1451,7 +1478,7 @@
         "id": "6c589b7c08b2805e",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "1764f8568a80ddbd"
@@ -1468,7 +1495,7 @@
         "id": "2a96bde58de995eb",
         "type": "function",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "isDefaultExists",
         "func": "msg.collection = \"admin_modules\"\n\nmsg.payload={\n    \"name\": \"Settings\"\n}\nreturn msg;",
         "outputs": 1,
@@ -1493,7 +1520,7 @@
         "id": "9ca81472e4ebd902",
         "type": "link call",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "links": [
             "346e518816416d1d"
@@ -1512,7 +1539,7 @@
         "id": "44ba43e791ca6b03",
         "type": "inject",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "props": [
             {
@@ -1542,7 +1569,7 @@
         "id": "02cedde7b7d47dc8",
         "type": "delay",
         "z": "c740254358c79788",
-        "g": "754996a3568a407c",
+        "g": "6d83e49b94059ff4",
         "name": "",
         "pauseType": "delay",
         "timeout": "1",
@@ -1563,7 +1590,8 @@
                 "f0abe371e3e5e3da",
                 "b8bcd41dc8aaae1d",
                 "591a842b22d55880",
-                "2a96bde58de995eb"
+                "2a96bde58de995eb",
+                "9b1dbfe6a4c7af8f"
             ]
         ],
         "l": false
@@ -2041,6 +2069,92 @@
         "x": 800,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "fe73532815559fa2",
+        "type": "function",
+        "z": "c740254358c79788",
+        "g": "6d83e49b94059ff4",
+        "name": "create default module Config",
+        "func": "if (msg.payload.length === 0) {\n    msg.collection = \"admin_modules\"\n\n    msg.payload = {\n        \"_id\": objectid(\"65bb90f10fc96b00119015df\"),\n        \"name\": \"Config\",\n        \"position\": 5,\n        \"icon\": \"\",\n        \"deleted\": false,\n        \"isParent\": true,\n\n    }\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 1060,
+        "y": 440,
+        "wires": [
+            [
+                "e1c3f1165bf307a6"
+            ]
+        ]
+    },
+    {
+        "id": "e1c3f1165bf307a6",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "g": "6d83e49b94059ff4",
+        "name": "",
+        "links": [
+            "1764f8568a80ddbd"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 1270,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b1dbfe6a4c7af8f",
+        "type": "function",
+        "z": "c740254358c79788",
+        "g": "6d83e49b94059ff4",
+        "name": "isDefaultExists",
+        "func": "msg.collection = \"admin_modules\"\n\nmsg.payload={\n    \"name\": \"Config\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 720,
+        "y": 440,
+        "wires": [
+            [
+                "d706b426d0f3d57d"
+            ]
+        ]
+    },
+    {
+        "id": "d706b426d0f3d57d",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "g": "6d83e49b94059ff4",
+        "name": "",
+        "links": [
+            "346e518816416d1d"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 870,
+        "y": 440,
+        "wires": [
+            [
+                "fe73532815559fa2"
+            ]
+        ]
     },
     {
         "id": "71d0784401d97a30",
