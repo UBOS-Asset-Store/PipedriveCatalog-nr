@@ -135,9 +135,7 @@
             "55fe7f34704f3bc7"
         ],
         "x": 14,
-        "y": 1119,
-        "w": 712,
-        "h": 902
+        "y": 1119
     },
     {
         "id": "d78377c07a215120",
@@ -224,9 +222,7 @@
             "ccbf43ec2e0f83d7"
         ],
         "x": 14,
-        "y": 19,
-        "w": 1952,
-        "h": 1022
+        "y": 19
     },
     {
         "id": "2229ae9934019399",
@@ -250,9 +246,7 @@
             "a2b1bc579a4c0ced"
         ],
         "x": 774,
-        "y": 1119,
-        "w": 972,
-        "h": 162
+        "y": 1119
     },
     {
         "id": "5bf7ccb6c6709633",
@@ -305,9 +299,7 @@
             "36a8ed88d4ee5217"
         ],
         "x": 774,
-        "y": 1319,
-        "w": 1652,
-        "h": 622
+        "y": 1319
     },
     {
         "id": "3b2ecc05f3cef5f7",
@@ -351,9 +343,7 @@
             "bd903ea2c5d6bd1c"
         ],
         "x": 14,
-        "y": 3019,
-        "w": 1132,
-        "h": 662
+        "y": 3019
     },
     {
         "id": "a8bcf74ef7690d27",
@@ -409,9 +399,7 @@
             "84af4b543dc711ed"
         ],
         "x": 14,
-        "y": 2059,
-        "w": 1032,
-        "h": 922
+        "y": 2059
     },
     {
         "id": "917b687317a1b2f4",
@@ -595,11 +583,11 @@
     {
         "id": "61baa7f31d9fdc66",
         "type": "mongodb",
-        "hostname": "${MONGO-HOST-NAME}",
+        "hostname": "${MONGODB-MONGO-HOST-NAME}",
         "topology": "direct",
         "connectOptions": "authSource=admin",
         "port": "27017",
-        "db": "${MONGO-DB-NAME}",
+        "db": "${MONGODB-MONGO-DB-NAME}",
         "name": "database"
     },
     {
@@ -607,7 +595,7 @@
         "type": "function",
         "z": "aa7da0082389d37b",
         "name": "find key",
-        "func": "const token = env.get(\"DRIVE_API_TOKEN\");\nconst url = env.get(\"DRIVE_URL\");\nmsg.url = `${url}/productFields?api_token=${token}`;\nmsg.savedData = msg.payload\nreturn msg;",
+        "func": "const processEnv = global.get(\"process_env\");\nconst { DRIVE_API_TOKEN: token, DRIVE_URL: url } = processEnv\nmsg.url = `${url}/productFields?api_token=${token}`;\nmsg.savedData = msg.payload\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -650,7 +638,7 @@
         "type": "function",
         "z": "aa7da0082389d37b",
         "name": "moveNextOrCreate",
-        "func": "msg.payload = msg.payload.data.filter(elem=>{\n    return elem.name ===\"stock\"\n})\nif (msg.payload.length > 0){\n    msg.stockKey = msg.payload[0].key\n    msg.payload = msg.savedData\n    return [msg, null]\n}else{\n    const token = env.get(\"DRIVE_API_TOKEN\");\n    const url = env.get(\"DRIVE_URL\");\n    msg.url = `${url}/productFields?api_token=${token}`;\n    msg.payload = {\n        name: \"stock\",\n        field_type: \"double\"\n    }\n    return [null, msg]\n}\nreturn msg;",
+        "func": "msg.payload = msg.payload.data.filter(elem=>{\n    return elem.name ===\"stock\"\n})\nif (msg.payload.length > 0){\n    msg.stockKey = msg.payload[0].key\n    msg.payload = msg.savedData\n    return [msg, null]\n}else{\n    const processEnv = global.get(\"process_env\");\n    const { DRIVE_API_TOKEN: token, DRIVE_URL: url } = processEnv\n    msg.url = `${url}/productFields?api_token=${token}`;\n    msg.payload = {\n        name: \"stock\",\n        field_type: \"double\"\n    }\n    return [null, msg]\n}\nreturn msg;",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -1711,6 +1699,348 @@
                 "6544322b922c1a49"
             ]
         ]
+    },
+    {
+        "id": "9dd5ed4ac2fb72c6",
+        "type": "http in",
+        "z": "c740254358c79788",
+        "name": "",
+        "url": "/setEnvs",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "0a9a9661bc5d7f44"
+            ]
+        ]
+    },
+    {
+        "id": "53ad268ef5546abc",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 164",
+        "func": "msg.collection = \"env\"\nif (msg.payload.length > 0){\n    msg.query = {\n        _id: objectid(msg.payload[0]._id)\n    }\n    msg.payload = {\n        $set:{\n            DRIVE_API_TOKEN: msg.oldpayload.DRIVE_API_TOKEN,\n            DRIVE_URL: msg.oldpayload.DRIVE_URL,\n        }\n    }\n    return [null, msg]\n}else{\n    msg.payload = {\n        _id: objectid(),\n        DRIVE_API_TOKEN: msg.oldpayload.DRIVE_API_TOKEN,\n        DRIVE_URL: msg.oldpayload.DRIVE_URL,\n    }\n    return [msg, null]\n}\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "objectid",
+                "module": "objectid"
+            }
+        ],
+        "x": 630,
+        "y": 600,
+        "wires": [
+            [
+                "c21c31b28203145d",
+                "1d17bfc1ca8ac903"
+            ],
+            [
+                "64c81856cb24dac1",
+                "1d17bfc1ca8ac903"
+            ]
+        ]
+    },
+    {
+        "id": "c21c31b28203145d",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "name": "",
+        "links": [
+            "1764f8568a80ddbd"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 790,
+        "y": 580,
+        "wires": [
+            [
+                "6eac8bdf539f8b83"
+            ]
+        ]
+    },
+    {
+        "id": "2a6d301a2ee78035",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 165",
+        "func": "// process.env.DRIVE_API_TOKEN = msg.payload.DRIVE_API_TOKEN\n// process.env.DRIVE_URL = msg.payload.DRIVE_URL\nif (msg.payload.length > 0) {\n    let process_env = {\n        DRIVE_URL: msg.payload[0].DRIVE_URL,\n        DRIVE_API_TOKEN: msg.payload[0].DRIVE_API_TOKEN\n    }\n    global.set(\"process_env\", process_env);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0192f318b98af9a1",
+        "type": "inject",
+        "z": "c740254358c79788",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 880,
+        "wires": [
+            [
+                "bde4bfc49d493fd3"
+            ]
+        ]
+    },
+    {
+        "id": "6f61d2ac6f6aece2",
+        "type": "inject",
+        "z": "c740254358c79788",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 760,
+        "wires": [
+            [
+                "1685ede5350679ab"
+            ]
+        ]
+    },
+    {
+        "id": "1685ede5350679ab",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 166",
+        "func": "node.warn(global.get(\"process_env\"))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0a9a9661bc5d7f44",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 167",
+        "func": "msg.oldpayload = msg.payload;\nmsg.collection = \"env\"\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 580,
+        "wires": [
+            [
+                "ce785b21585e7b87"
+            ]
+        ]
+    },
+    {
+        "id": "ce785b21585e7b87",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "name": "",
+        "links": [
+            "346e518816416d1d"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 450,
+        "y": 580,
+        "wires": [
+            [
+                "53ad268ef5546abc"
+            ]
+        ]
+    },
+    {
+        "id": "64c81856cb24dac1",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "name": "",
+        "links": [
+            "286431cd31c9fc7a"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 800,
+        "y": 620,
+        "wires": [
+            [
+                "6eac8bdf539f8b83"
+            ]
+        ]
+    },
+    {
+        "id": "6eac8bdf539f8b83",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 168",
+        "func": "// process.env.DRIVE_API_TOKEN = msg.payload.DRIVE_API_TOKEN\n// process.env.DRIVE_URL = msg.payload.DRIVE_URL\nlet process_env = {\n    DRIVE_URL: msg.oldpayload.DRIVE_URL,\n    DRIVE_API_TOKEN: msg.oldpayload.DRIVE_API_TOKEN\n}\nglobal.set(\"process_env\", process_env);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 580,
+        "wires": [
+            [
+                "5aa44e33ff5ed303"
+            ]
+        ]
+    },
+    {
+        "id": "5aa44e33ff5ed303",
+        "type": "http response",
+        "z": "c740254358c79788",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1130,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "bde4bfc49d493fd3",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 169",
+        "func": "msg.oldPayload = msg.payload;\nmsg.collection = \"env\"\nmsg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 820,
+        "wires": [
+            [
+                "1a2f5404194c9b79"
+            ]
+        ]
+    },
+    {
+        "id": "1a2f5404194c9b79",
+        "type": "link call",
+        "z": "c740254358c79788",
+        "name": "",
+        "links": [
+            "346e518816416d1d"
+        ],
+        "linkType": "static",
+        "timeout": "30",
+        "x": 530,
+        "y": 820,
+        "wires": [
+            [
+                "2a6d301a2ee78035"
+            ]
+        ]
+    },
+    {
+        "id": "7eeea0045607340c",
+        "type": "function",
+        "z": "c740254358c79788",
+        "name": "function 170",
+        "func": "msg.payload = {\n    DRIVE_URL: \"Test\",\n    DRIVE_API_TOKEN: \"Test\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 620,
+        "wires": [
+            [
+                "0a9a9661bc5d7f44"
+            ]
+        ]
+    },
+    {
+        "id": "7d13172647e5a2de",
+        "type": "inject",
+        "z": "c740254358c79788",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "7eeea0045607340c"
+            ]
+        ]
+    },
+    {
+        "id": "1d17bfc1ca8ac903",
+        "type": "debug",
+        "z": "c740254358c79788",
+        "name": "debug 48",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 520,
+        "wires": []
     },
     {
         "id": "71d0784401d97a30",
@@ -6248,7 +6578,7 @@
         "z": "be62cf940ec3a969",
         "g": "3d03533d24451304",
         "name": "isSearcheOrGet",
-        "func": "const token = env.get(\"DRIVE_API_TOKEN\");\nconst url = env.get(\"DRIVE_URL\");\nif(msg.payload.term){\n    msg.url = `${url}/products/search?api_token=${token}&term=${msg.payload.term}`;\n    return [null, msg]\n}else{\n    msg.url = `${url}/products?api_token=${token}`;\n    return [msg, null];\n}\n",
+        "func": "const processEnv = global.get(\"process_env\");\n// const token = env.get(\"DRIVE_API_TOKEN\");\n// const url = env.get(\"DRIVE_URL\");\nconst { DRIVE_API_TOKEN: token, DRIVE_URL: url } = processEnv\nif(msg.payload.term){\n    msg.url = `${url}/products/search?api_token=${token}&term=${msg.payload.term}`;\n    return [null, msg]\n}else{\n    msg.url = `${url}/products?api_token=${token}`;\n    return [msg, null];\n}\n",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
@@ -6346,7 +6676,7 @@
         "z": "be62cf940ec3a969",
         "g": "9e14441478418873",
         "name": "create Order",
-        "func": "const token = env.get(\"DRIVE_API_TOKEN\");\nconst url = env.get(\"DRIVE_URL\");\nmsg.url = `${url}/deals?api_token=${token}`;\nmsg.payload = {\n    title: `Order for ${msg.fromApp.fullName}`,\n    value: msg.fromApp.totalPrice,\n    person_id: msg.person_id,\n}\nreturn msg;",
+        "func": "const processEnv = global.get(\"process_env\");\nconst { DRIVE_API_TOKEN: token, DRIVE_URL: url } = processEnv\nmsg.url = `${url}/deals?api_token=${token}`;\nmsg.payload = {\n    title: `Order for ${msg.fromApp.fullName}`,\n    value: msg.fromApp.totalPrice,\n    person_id: msg.person_id,\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6798,7 +7128,7 @@
         "z": "be62cf940ec3a969",
         "g": "9e14441478418873",
         "name": "regPerson",
-        "func": "const token = env.get(\"DRIVE_API_TOKEN\");\nconst url = env.get(\"DRIVE_URL\");\nmsg.url = `${url}/persons?api_token=${token}`;\nmsg.payload = {\n    name: msg.fromApp.fullName,\n    email: [\n        {\n            \"value\": msg.fromApp.email,\n            \"primary\": true,\n            \"label\": \"main\"\n        }\n    ]\n}\nreturn msg;",
+        "func": "const processEnv = global.get(\"process_env\");\nconst { DRIVE_API_TOKEN: token, DRIVE_URL: url } = processEnv\nmsg.url = `${url}/persons?api_token=${token}`;\nmsg.payload = {\n    name: msg.fromApp.fullName,\n    email: [\n        {\n            \"value\": msg.fromApp.email,\n            \"primary\": true,\n            \"label\": \"main\"\n        }\n    ]\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",

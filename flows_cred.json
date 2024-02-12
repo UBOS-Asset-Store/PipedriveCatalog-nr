@@ -1,7 +1,7 @@
 {
     "61baa7f31d9fdc66": {
-        "user": "${MONGO-USER-NAME}",
-        "password": "${MONGO-PASSWORD}"
+        "user": "${MONGODB-MONGO-USER-NAME}",
+        "password": "${MONGODB-MONGO-PASSWORD}"
     },
     "c156d588bb3ba207": {},
     "8779a87db9bcb5dc": {}
