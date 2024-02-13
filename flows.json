@@ -135,9 +135,7 @@
             "55fe7f34704f3bc7"
         ],
         "x": 14,
-        "y": 1119,
-        "w": 712,
-        "h": 902
+        "y": 1119
     },
     {
         "id": "d78377c07a215120",
@@ -224,9 +222,7 @@
             "ccbf43ec2e0f83d7"
         ],
         "x": 14,
-        "y": 19,
-        "w": 1952,
-        "h": 1022
+        "y": 19
     },
     {
         "id": "2229ae9934019399",
@@ -250,9 +246,7 @@
             "a2b1bc579a4c0ced"
         ],
         "x": 774,
-        "y": 1119,
-        "w": 972,
-        "h": 162
+        "y": 1119
     },
     {
         "id": "5bf7ccb6c6709633",
@@ -305,9 +299,7 @@
             "36a8ed88d4ee5217"
         ],
         "x": 774,
-        "y": 1319,
-        "w": 1652,
-        "h": 622
+        "y": 1319
     },
     {
         "id": "3b2ecc05f3cef5f7",
@@ -351,9 +343,7 @@
             "bd903ea2c5d6bd1c"
         ],
         "x": 14,
-        "y": 3019,
-        "w": 1132,
-        "h": 662
+        "y": 3019
     },
     {
         "id": "a8bcf74ef7690d27",
@@ -409,9 +399,7 @@
             "84af4b543dc711ed"
         ],
         "x": 14,
-        "y": 2059,
-        "w": 1032,
-        "h": 922
+        "y": 2059
     },
     {
         "id": "917b687317a1b2f4",
@@ -469,9 +457,7 @@
             "070b7d427b47ba29"
         ],
         "x": 14,
-        "y": -21,
-        "w": 1092,
-        "h": 162
+        "y": -21
     },
     {
         "id": "e1e2570867a96dae",
@@ -521,9 +507,7 @@
             "794551bef5e94ab3"
         ],
         "x": 14,
-        "y": 159,
-        "w": 692,
-        "h": 122
+        "y": 159
     },
     {
         "id": "9e14441478418873",
@@ -561,9 +545,7 @@
             "86bf79208f5c9b34"
         ],
         "x": 14,
-        "y": 299,
-        "w": 1592,
-        "h": 202
+        "y": 299
     },
     {
         "id": "6d83e49b94059ff4",
@@ -1369,7 +1351,7 @@
         "z": "c740254358c79788",
         "g": "e1e2570867a96dae",
         "name": "Administrator",
-        "func": "if(msg.payload.length == 0){\n    msg.payload = {\n        _id: objectid('64afca4f89bef50011f99321'),\n        name: \"Administrator\",\n        deleted: false,\n        permissions: [\n            { \n                \"module\": \"Catalog\", \n                \"moduleId\": objectid('65bb90f10fc96b00119014dc'),  \n                \"canCreate\": true, \n                \"canRead\": true, \n                \"canEdit\": true, \n                \"canRemove\": true \n            },\n            {\n                \"module\": \"Orders History\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014dd'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"My Profile\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014de'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Settings\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Config\",\n                \"moduleId\": objectid('65bb90f10fc96b00119015df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            }\n        ],\n        createdAt: new Date((new Date().toISOString()))\n    }\n    return msg;\n}",
+        "func": "if(msg.payload.length == 0){\n    msg.payload = {\n        _id: objectid('64afca4f89bef50011f99321'),\n        name: \"Administrator\",\n        deleted: false,\n        permissions: [\n            { \n                \"module\": \"Catalog\", \n                \"moduleId\": objectid('65bb90f10fc96b00119014dc'),  \n                \"canCreate\": true, \n                \"canRead\": true, \n                \"canEdit\": true, \n                \"canRemove\": true \n            },\n            {\n                \"module\": \"Orders History\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014dd'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"My Profile\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014de'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            {\n                \"module\": \"Settings\",\n                \"moduleId\": objectid('65bb90f10fc96b00119014df'),\n                \"canCreate\": true,\n                \"canRead\": true,\n                \"canEdit\": true,\n                \"canRemove\": true\n            },\n            // {\n            //     \"module\": \"Config\",\n            //     \"moduleId\": objectid('65bb90f10fc96b00119015df'),\n            //     \"canCreate\": true,\n            //     \"canRead\": true,\n            //     \"canEdit\": true,\n            //     \"canRemove\": true\n            // }\n        ],\n        createdAt: new Date((new Date().toISOString()))\n    }\n    return msg;\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1590,8 +1572,7 @@
                 "f0abe371e3e5e3da",
                 "b8bcd41dc8aaae1d",
                 "591a842b22d55880",
-                "2a96bde58de995eb",
-                "9b1dbfe6a4c7af8f"
+                "2a96bde58de995eb"
             ]
         ],
         "l": false
